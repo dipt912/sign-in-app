@@ -1,0 +1,34 @@
+<form [formGroup]="registerFrom" (ngSubmit)="onSubmit(registerFrom)" class ="register-form">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="email"
+       placeholder="Enter email"
+       formControlName="email">
+    <small id="emailHelp" class="form-text text-muted" *ngIf="f.email.touched && f.email.errors">Email is invalid</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Password</label>
+    <input type="password" class="form-control" id="passowrd"
+       placeholder="Enter password"
+       formControlName="password">
+    <small id="emailHelp" class="form-text text-muted" *ngIf="f.password.touched && f.password.errors">
+        Password invalid
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1"> Retype Password</label>
+    <input type="password" class="form-control" id="retypepassword"
+       placeholder="Retype passowrd"
+       formControlName="retypepassword">
+    <small id="emailHelp" class="form-text text-muted" *ngIf="f.retypepassword.touched && f.retypepassword.errors"> Password not match</small>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="registerFrom.invalid">
+    Register
+  </button>
+</form>
