@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import * as signin from './signin/signin.module';
-import * as register from './register/register.module';
+import {SigninModule} from './signin/signin.module';
+import {  RegisterModule } from './register/register.module';
+
+export function loadSignInPageModule() {
+  return SigninModule;
+}
+
+export function RegisterpageModule() {
+  return RegisterModule;
+}
 
 const routes: Routes = [
   { path: 'signin',
-      loadChildren: () => signin.SigninModule
+      loadChildren: loadSignInPageModule
    },
    { path: 'register',
-      loadChildren: () => register.RegisterModule
+      loadChildren: RegisterpageModule
    },
   {
     path: '',
