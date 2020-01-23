@@ -31,9 +31,9 @@ import { environment } from '../environments/environment.prod';
     HttpClientModule,
     HomeModule,
     RootStoreModule,
-    !environment.production && StoreDevtoolsModule.instrument({
+    StoreDevtoolsModule.instrument({
       maxAge: 10
-    }) || []
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
