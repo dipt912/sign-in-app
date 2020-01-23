@@ -4,7 +4,7 @@ import { RegistrationState} from './state';
 import { User } from '../../Models/User';
 
 
-export const getError = (state: RegistrationState): string => state.error;
+export const getError = (state: RegistrationState): boolean => state.isError;
 
 export const getIsLoading = (state: RegistrationState): boolean => state.isLoading;
 
@@ -16,7 +16,7 @@ export const selectRegState: MemoizedSelector<
 > = createFeatureSelector<RegistrationState>('registration');
 
 
-export const selectRegstrationError: MemoizedSelector<object, any> = createSelector(
+export const selectRegstrationError: MemoizedSelector<object, boolean> = createSelector(
     selectRegState,
     getError
   );
