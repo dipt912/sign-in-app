@@ -21,6 +21,8 @@ export class SigninPageComponent implements OnInit, OnDestroy {
   isRegister: boolean;
   loadingSubScription: Subscription;
   loginSub: Subscription;
+  isError: boolean;
+  errorSub: Subscription;
 
   constructor( private fb: FormBuilder,
                private router: Router,
@@ -30,11 +32,16 @@ export class SigninPageComponent implements OnInit, OnDestroy {
     this.loadingSubScription = this.store.select( RegStoreSelectors.selectRegIsLoading).subscribe( (t) => {
       this.loading = t as boolean;
     });
-    this.loginSub = this.store.select( RegStoreSelectors.selectRegIsLoading).subscribe( (t) => {
+    this.loginSub = this.store.select( RegStoreSelectors.selectRegUser).subscribe( (t) => {
+      console.log('selectRegIsLoading', t);
       if (t) {
         this.router.navigate(['home']);
       }
     });
+    this.errorSub = this.store.select( RegStoreSelectors.selectRegstrationError).subscribe( (t) => {
+      console.log('error sub', t);
+      this.isError = t;
+ });
     this.signIn = this.fb.group( {
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -56,6 +63,7 @@ export class SigninPageComponent implements OnInit, OnDestroy {
   ngOnDestroy () {
     this.loadingSubScription.unsubscribe();
     this.loginSub.unsubscribe();
+    this.errorSub.unsubscribe();
   }
 
 }
