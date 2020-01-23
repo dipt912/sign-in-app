@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/authorization/auth.service';
-import { first } from 'rxjs/operators';
 import {  Subscription } from 'rxjs';
-import { RootStoreState , RegStoreActions , RegStoreSelectors, RootStoreSelectors, RegistrationState } from '../../root-store';
+import {   RegStoreActions , RegStoreSelectors, RegistrationState } from '../../root-store';
 import { Store } from '@ngrx/store';
 import { UserReg } from '../../Models/User';
 
@@ -25,7 +23,6 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private authApi: AuthService,
               private store: Store<{ registration: RegistrationState}> ) {}
 
   ngOnInit() {

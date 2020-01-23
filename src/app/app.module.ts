@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { RootStoreModule } from './root-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment.prod';
 
 
 @NgModule({
@@ -30,9 +31,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     HomeModule,
     RootStoreModule,
-    StoreDevtoolsModule.instrument({
+    !environment.production && StoreDevtoolsModule.instrument({
       maxAge: 10
-    })
+    }) || []
   ],
   providers: [],
   bootstrap: [AppComponent]

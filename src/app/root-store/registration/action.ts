@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { LoginUser, User, UserReg } from '../../Models/User';
-// import { MyModel } from '../../models';
 
 export enum ActionTypes {
   SIGN_IN_REQUEST = 'SIGN_IN_REQUEST',

@@ -24,7 +24,6 @@ export class SigninPageComponent implements OnInit, OnDestroy {
 
   constructor( private fb: FormBuilder,
                private router: Router,
-              private authApi: AuthService,
               private store: Store<{ registration: RegistrationState}> ) { }
 
   ngOnInit() {
