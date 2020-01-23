@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "sign-in-app"
+  "defaultProject": "sign-in-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
