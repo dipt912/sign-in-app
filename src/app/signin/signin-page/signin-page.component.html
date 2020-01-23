@@ -6,12 +6,12 @@
         <small id="nameHelp" class="text-danger" *ngIf="isError">Authentication error. Please check email and password</small>
         <div class="form-group mt-2">
           <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
-          <small id="emailHelp" class="form-text text-muted" *ngIf="f.email.touched && f.email.errors">Email is invalid</small>
+          <small id="emailHelp" class="form-text text-danger" *ngIf="f.email.touched && f.email.errors">Email is invalid</small>
         </div>
 
         <div class="form-group">
           <input type="password" class="form-control" id="passowrd" placeholder="Enter password" formControlName="password">
-          <small id="emailHelp" class="form-text text-muted" *ngIf="f.password.touched && f.password.errors">
+          <small id="emailHelp" class="form-text text-danger" *ngIf="f.password.touched && f.password.errors">
             Password invalid
           </small>
         </div>
