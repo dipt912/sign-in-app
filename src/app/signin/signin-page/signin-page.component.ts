@@ -43,7 +43,7 @@ export class SigninPageComponent implements OnInit, OnDestroy {
       this.isError = t;
  });
     this.signIn = this.fb.group( {
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
