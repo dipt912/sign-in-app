@@ -1,0 +1,13 @@
+.aligin-vertical {
+    min-height: 100%;  
+    min-height: 100vh;
+  
+    display: flex;
+    align-items: center;
+  
+  }
+  .container-title {
+    color:rgb(11, 11, 14);
+    font-weight: 500;
+    font-size: 20px;
+  }
