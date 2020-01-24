@@ -1,27 +1,21 @@
-node {
-    def nodeHome = tool name: 'node-11.0.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-    env.PATH = "${nodeHome}/bin:${env.PATH}"
+pipeline {
+    agent { docker { image 'node:10.0' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'npm --version'
+            }
+        }
+        stage('npm install') {
+            sh "npm install"
+        }
 
-    stage('check tools') {
-        sh "node -v"
-        sh "npm -v"
-    }
+        stage('unit tests') {
+            sh "ng test"
+        }
 
-    stage('checkout') {
-        checkout scm
+        stage('unit tests') {
+            sh "ng build --prod"
+        }
     }
-
-    stage('npm install') {
-        sh "npm install"
-    }
-
-    stage('unit tests') {
-        sh "ng test"
-    }
-
-     stage('unit tests') {
-        sh "ng build --prod"
-    }
-   
-    
 }
