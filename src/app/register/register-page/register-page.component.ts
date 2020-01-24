@@ -5,6 +5,7 @@ import {  Subscription } from 'rxjs';
 import {   RegStoreActions , RegStoreSelectors, RegistrationState } from '../../root-store';
 import { Store } from '@ngrx/store';
 import { UserReg } from '../../Models/User';
+import { AuthService } from '../../services/authorization/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -19,10 +20,12 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   isRegister: boolean;
   loadingSubScription: Subscription;
   loginSub: Subscription;
+  isValidEmail: boolean;
 
 
   constructor(private fb: FormBuilder,
               private router: Router,
+              private auth: AuthService,
               private store: Store<{ registration: RegistrationState}> ) {}
 
   ngOnInit() {
@@ -76,6 +79,14 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
             matchingControl.setErrors(null);
         }
     };
+}
+
+checkUserName() {
+  console.log('click');
+  this.auth.isUserAvailable(this.registerFrom.controls.email.value).subscribe((data) => {
+    console.log('data', data);
+    this.isValidEmail = !data;
+  });
 }
 
 ngOnDestroy () {

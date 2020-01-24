@@ -2,33 +2,41 @@
   <div class="col col-md-3 col-md-offset-3">
     <div class="jumbotron">
       <div class="row justify-content-center container-title"> Register </div>
-      <form [formGroup]="registerFrom" (ngSubmit)="onSubmit(registerFrom)" class="register-form">
+      <form [formGroup]="registerFrom"  class="register-form">
 
           <div class="form-group">
               <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
               <small id="nameHelp" class="form-text text-muted" *ngIf="f.name.touched && f.name.errors">Name is invalid</small>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group">
           <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
-          <small id="emailHelp" class="form-text text-muted" *ngIf="f.email.touched && f.email.errors">Email is invalid</small>
+          <div class="input-group-append"  *ngIf="!(f.email.errors) && f.email.value">
+              <button class="btn btn-success" (click)="checkUserName()"> check </button>
+          </div>
+          <div class="input-group">
+              <small id="emailHelp" class="text-success" *ngIf="f.email.touched && !f.email.errors && isValidEmail">Email is Available</small>
+            </div>
+          <div class="input-group">
+            <small id="emailHelp" class="form-text text-muted" *ngIf="f.email.touched && f.email.errors">Email is invalid</small>
+          </div>
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="passowrd" placeholder="Enter password" formControlName="password">
+          <input type="password" class="form-control" id="passowrd" placeholder="Enter password"  formControlName="password">
           <small id="emailHelp" class="form-text text-muted" *ngIf="f.password.touched && f.password.errors">
             Password invalid
           </small>
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="retypepassword" placeholder="Retype passowrd" formControlName="retypepassword">
+          <input type="password" class="form-control" id="retypepassword" placeholder="Retype passowrd"  formControlName="retypepassword">
           <small id="emailHelp" class="form-text text-muted" *ngIf="f.retypepassword.touched && f.retypepassword.errors"> Password not match</small>
         </div>
 
 
         <div class="row justify-content-center">
-          <button type="submit" class="btn btn-primary" [disabled]="registerFrom.invalid">
+          <button type="submit" class="btn btn-primary" [disabled]="registerFrom.invalid" (click)="onSubmit(registerFrom)">
             Register
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           </button>
