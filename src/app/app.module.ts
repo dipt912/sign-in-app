@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { RootStoreModule } from './root-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.prod';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { environment } from '../environments/environment.prod';
       maxAge: 10
     })
   ],
-  providers: [],
+  providers: [ {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

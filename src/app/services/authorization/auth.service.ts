@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserReg, LoginUser } from '../../Models/User';
+import { User, UserReg, LoginUser, CheckUserResponse } from '../../Models/User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -41,6 +41,13 @@ export class AuthService {
     }
 
     return user;
+    }));
+  }
+
+  isUserAvailable(email: string) {
+    return this.http.post(`${environment.backendApi}checkusername` , {email} ).pipe(map( data  => {
+      const response = data as CheckUserResponse;
+      return response.isUser;
     }));
   }
 
