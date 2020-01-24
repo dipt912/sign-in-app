@@ -3,10 +3,10 @@
     <div class="jumbotron">
       <div class="row justify-content-center container-title"> Register </div>
       <form [formGroup]="registerFrom"  class="register-form">
-
+          <small id="nameHelp" class="text-danger" *ngIf="isError">Authentication error. Please use different email</small>
           <div class="form-group">
               <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
-              <small id="nameHelp" class="form-text text-muted" *ngIf="f.name.touched && f.name.errors">Name is invalid</small>
+              <small id="nameHelp" class="form-text text-danger" *ngIf="f.name.touched && f.name.errors">Name is invalid</small>
         </div>
 
         <div class="form-group input-group">
@@ -30,8 +30,8 @@
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="retypepassword" placeholder="Retype passowrd"  formControlName="retypepassword">
-          <small id="emailHelp" class="form-text text-muted" *ngIf="f.retypepassword.touched && f.retypepassword.errors"> Password not match</small>
+          <input type="password" class="form-control" id="retypepassword" placeholder="Retype passowrd" formControlName="retypepassword">
+          <small id="emailHelp" class="form-text text-danger" *ngIf="f.retypepassword.touched && f.retypepassword.errors"> Password not match</small>
         </div>
 
 

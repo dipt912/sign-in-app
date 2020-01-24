@@ -11,7 +11,7 @@
 
         <div class="form-group">
           <input type="password" class="form-control" id="passowrd" placeholder="Enter password" formControlName="password">
-          <small id="emailHelp" class="form-text text-muted" *ngIf="f.password.touched && f.password.errors">
+          <small id="emailHelp" class="form-text text-danger" *ngIf="f.password.touched && f.password.errors">
             Password invalid
           </small>
         </div>

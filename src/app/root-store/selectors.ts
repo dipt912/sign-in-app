@@ -4,9 +4,9 @@ import {
 } from './registration';
 
 
-export const selectError: MemoizedSelector<object, string> = createSelector(
+export const selectError: MemoizedSelector<object, boolean> = createSelector(
   RegStoreSelectors.selectRegstrationError,
-  (registrationError: string) => {
+  (registrationError: boolean) => {
     return  registrationError;
   }
 );
